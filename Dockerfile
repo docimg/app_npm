@@ -14,12 +14,18 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         php7-posix  php7-session  php7-xml  php7-simplexml  php7-mcrypt  php7-xsl  php7-zip  php7-zlib \
         php7-dom  php7-redis php7-tokenizer  php7-gd  php7-fileinfo  php7-zmq  php7-memcached  php7-xmlreader \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
+    && cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
+    && mkdir /run/nginx/ \
+    && chown -R www-data:www-data /var/www/html \
     && chmod +x /start.sh
+
+COPY config/localhost.conf /etc/nginx/conf.d/localhost.conf
 
 WORKDIR /var/www/html
 
 EXPOSE 80
 
 VOLUME ["/var/log/nginx"]
+VOLUME [ "/var/lib/mysql" ]
 
 CMD /start.sh
