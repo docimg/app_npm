@@ -13,7 +13,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         php7-pcntl  php7-pdo  php7-mysqlnd  php7-mysqli  php7-pdo_mysql  php7-pdo_pgsql  php7-phar \
         php7-posix  php7-session  php7-xml  php7-simplexml  php7-mcrypt  php7-xsl  php7-zip  php7-zlib \
         php7-dom  php7-redis php7-tokenizer  php7-gd  php7-fileinfo  php7-zmq  php7-memcached  php7-xmlreader \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
+    && chmod +x /start.sh
 
 WORKDIR /var/www/html
 
