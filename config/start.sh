@@ -3,8 +3,6 @@
 mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
 mysqld_safe &
-mysql_secure_installation
-mysqladmin -uroot password 'root_pass'
 
 mysql_ready() {
 	mysqladmin ping --socket=/run/mysqld/mysqld.sock --user=root --password=root_pass > /dev/null 2>&1
