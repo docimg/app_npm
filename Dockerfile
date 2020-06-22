@@ -23,8 +23,6 @@ COPY config/www.conf /etc/nginx/conf.d/www.conf
 
 WORKDIR /var/www/html
 
-EXPOSE 80
-
 VOLUME ["/var/log/nginx"]
 VOLUME [ "/var/lib/mysql" ]
 

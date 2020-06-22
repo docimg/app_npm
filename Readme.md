@@ -16,6 +16,10 @@ FROM docimg/npm:latest
 docker build -t docimg/app_npm:v1.0 .
 docker stop app_npm && docker rm app_npm
 docker run -d --name app_npm -p 80:80 docimg/app_npm:v1.0
+
+docker exec -it app_npm /bin/sh
+# MariaDB配置
+mysql_secure_installation
 ```
 
 ## 配置文件
@@ -31,9 +35,3 @@ php.ini：/usr/local/etc/php/php.ini
 
 mysql数据：/var/lib/mysql
 
-## MariaDB配置
-
-```bash
-mysql_secure_installation
-mysqladmin -uroot password 'root_pass'
-```
