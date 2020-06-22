@@ -8,7 +8,6 @@
 
 ```
 FROM docimg/npm:latest
-
 ......
 ```
 
@@ -16,7 +15,7 @@ FROM docimg/npm:latest
 ```bash
 docker build -t docimg/app_npm:v1.0 .
 docker stop app_npm && docker rm app_npm
-docker run --name app_npm -p 80:80 docimg/app_npm:v1.0
+docker run -d --name app_npm -p 80:80 docimg/app_npm:v1.0
 ```
 
 ## 配置文件
