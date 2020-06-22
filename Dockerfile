@@ -19,7 +19,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && chown -R www-data:www-data /var/www/html \
     && chmod +x /start.sh
 
-COPY config/localhost.conf /etc/nginx/conf.d/localhost.conf
+COPY config/phpinfo.cn.conf /etc/nginx/conf.d/phpinfo.cn.conf
 
 WORKDIR /var/www/html
 
