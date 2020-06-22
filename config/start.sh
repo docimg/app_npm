@@ -3,7 +3,7 @@
 mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
 mysqld_safe &
-sleep 5s
+mysql_secure_installation
 mysqladmin -uroot password 'root_pass'
 
 mysql_ready() {
