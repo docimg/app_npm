@@ -29,12 +29,10 @@ mysql_secure_installation
 
 docker启动脚本：/start.sh
 
-nginx配置文件：/etc/nginx/conf.d/www.conf
-默认域名：phpinfo.cn
-
-nginx日志：/var/log/nginx
-
+nginx配置文件：/etc/nginx/conf.d/*.conf
 php.ini：/usr/local/etc/php/php.ini
 
+nginx日志：/var/log/nginx
 mysql数据：/var/lib/mysql
 
+web根目录：/var/www/html/
