@@ -15,11 +15,9 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         php7-dom  php7-redis php7-tokenizer  php7-gd  php7-fileinfo  php7-zmq  php7-memcached  php7-xmlreader \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
     && cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
-    && mkdir /run/nginx/ \
+    && mkdir -p /run/nginx/ \
     && chown -R www-data:www-data /var/www/html \
     && chmod +x /start.sh
-
-COPY config/www.conf /etc/nginx/conf.d/www.conf
 
 WORKDIR /var/www/html
 
