@@ -2,6 +2,7 @@
 
 if [ -d /etc/mysql/root_password ]; then
     echo "[i] MySQL directory already present, skipping creation"
+    /usr/bin/mysqld --defaults-file=/etc/mysql/my.cnf --user=root --console --character-set-server=utf8 
 else
     echo "[i] MySQL data directory not found, creating initial DBs"
 
@@ -42,7 +43,10 @@ EOF
         fi
     fi
 
-    /usr/bin/mysqld --init-file=$tfile --user=root --verbose=0
+    /usr/bin/mysqld --defaults-file=/etc/mysql/my.cnf --user=root --console --character-set-server=utf8 &
+
+    mysql -uroot -e "source $tfile;"
+
     rm -f $tfile
 fi
 
@@ -50,8 +54,6 @@ unset MYSQL_DATABASE
 unset MYSQL_USER
 unset MYSQL_PASS
 unset MYSQL_ROOT_PASSWORD
-
-/usr/bin/mysqld --defaults-file=/etc/mysql/my.cnf --user=root --console --character-set-server=utf8 &
 
 php-fpm &
 
