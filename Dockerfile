@@ -7,8 +7,8 @@ COPY src /var/www/html
 COPY config/start.sh /start.sh
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-    && apk add --update --no-cache tar curl nginx mysql mysql-client \
-    && apk add --update php7-fpm php7  php7-dev  php7-apcu  php7-bcmath  php7-xmlwriter  php7-ctype \
+    && apk update && apk add --no-cache tar curl nginx mysql mysql-client pwgen \
+    && apk add php7-fpm php7  php7-dev  php7-apcu  php7-bcmath  php7-xmlwriter  php7-ctype \
         php7-curl  php7-exif  php7-iconv  php7-intl  php7-json  php7-mbstring php7-opcache  php7-openssl \
         php7-pcntl  php7-pdo  php7-mysqlnd  php7-mysqli  php7-pdo_mysql  php7-pdo_pgsql  php7-phar \
         php7-posix  php7-session  php7-xml  php7-simplexml  php7-mcrypt  php7-xsl  php7-zip  php7-zlib \
@@ -18,6 +18,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && mkdir -p /run/nginx/ \
     && chown -R www-data:www-data /var/www/html \
     && chmod +x /start.sh
+
+COPY config/my.cnf /etc/mysql/my.cnf
 
 WORKDIR /var/www/html
 
