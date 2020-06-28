@@ -1,11 +1,9 @@
 #!/bin/sh
 
-if [ -d /var/lib/mysql ]; then
+if [ -d /etc/mysql/root_password ]; then
     echo "[i] MySQL directory already present, skipping creation"
 else
     echo "[i] MySQL data directory not found, creating initial DBs"
-
-    mkdir -p /var/lib/mysql
 
     mysql_install_db --user=root > /dev/null
 

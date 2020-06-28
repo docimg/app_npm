@@ -17,7 +17,10 @@ docker push docimg/app_npm:v1.0
 
 docker build -t docimg/app_npm:v1.0 .
 docker stop app_npm && docker rm app_npm
-docker run -d --name app_npm -p 80:80 docimg/app_npm:v1.0
+docker run -d --name app_npm -p 80:80 \
+    -e 'MYSQL_DATABASE=visitor_record' \
+    -e 'MYSQL_USER=laravel' -e 'MYSQL_PASS=123456789' \
+    docimg/app_npm:v1.0
 
 MYSQL_DATABASE  # 启动时创建新的数据库
 MYSQL_USER      # 新数据库的管理员账号
