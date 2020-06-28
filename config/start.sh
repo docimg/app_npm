@@ -5,13 +5,14 @@ if [ -d /etc/mysql/root_password ]; then
 else
     echo "[i] MySQL data directory not found, creating initial DBs"
 
+    mkdir -p /var/lib/mysql
+
     mysql_install_db --user=root > /dev/null
 
     if [ "$MYSQL_ROOT_PASSWORD" = "" ]; then
         MYSQL_ROOT_PASSWORD=`pwgen 16 1`
         echo "[i] MySQL root Password: $MYSQL_ROOT_PASSWORD"
         echo $MYSQL_ROOT_PASSWORD > /etc/mysql/root_password
-        echo $MYSQL_ROOT_PASSWORD > /var/lib/mysql/root_password
     fi
 
     MYSQL_DATABASE=${MYSQL_DATABASE:-""}
@@ -45,7 +46,12 @@ EOF
     rm -f $tfile
 fi
 
-/usr/bin/mysqld --defaults-file=/etc/mysql/my.cnf --user=root --console --character-set-server=utf8
+unset MYSQL_DATABASE
+unset MYSQL_USER
+unset MYSQL_PASS
+unset MYSQL_ROOT_PASSWORD
+
+/usr/bin/mysqld --defaults-file=/etc/mysql/my.cnf --user=root --console --character-set-server=utf8 &
 
 php-fpm &
 
