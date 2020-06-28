@@ -18,7 +18,7 @@ else
 
     MYSQL_DATABASE=${MYSQL_DATABASE:-""}
     MYSQL_USER=${MYSQL_USER:-""}
-    MYSQL_PASSWORD=${MYSQL_PASSWORD:-""}
+    MYSQL_PASS=${MYSQL_PASS:-""}
 
     tfile=`mktemp`
     if [ ! -f "$tfile" ]; then
@@ -38,8 +38,8 @@ EOF
         echo "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\` CHARACTER SET utf8 COLLATE utf8_general_ci;" >> $tfile
 
         if [ "$MYSQL_USER" != "" ]; then
-            echo "[i] Creating user: $MYSQL_USER with password $MYSQL_PASSWORD"
-            echo "GRANT ALL ON \`$MYSQL_DATABASE\`.* to '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> $tfile
+            echo "[i] Creating user: $MYSQL_USER with password $MYSQL_PASS"
+            echo "GRANT ALL ON \`$MYSQL_DATABASE\`.* to '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASS';" >> $tfile
         fi
     fi
 

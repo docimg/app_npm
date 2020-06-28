@@ -21,7 +21,7 @@ docker run -d --name app_npm -p 80:80 docimg/app_npm:v1.0
 
 MYSQL_DATABASE  # 启动时创建新的数据库
 MYSQL_USER      # 新数据库的管理员账号
-MYSQL_PASSWORD  # 新数据库的管理员密码
+MYSQL_PASS      # 新数据库的管理员密码
 MYSQL_ROOT_PASSWORD # root用户密码，如果不提供系统将随机生成
 
 docker exec -it app_npm /bin/sh
