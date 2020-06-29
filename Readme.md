@@ -56,3 +56,4 @@ FROM docimg/app_npm:latest
 ## 参考链接
 
 - [mysql-docker](https://github.com/tonydeng/mysql-docker)
+- [mysqld_safe](https://mariadb.com/kb/en/mysqld_safe/)
