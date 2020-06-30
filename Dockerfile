@@ -20,9 +20,10 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && chown -R www-data:www-data /var/www/html \
     && mv /tmp/my.cnf /etc/mysql/my.cnf \
     && mv /tmp/localhost.conf /etc/nginx/conf.d/localhost.conf \
-    && chmod +x /tmp/start.sh \
-    && /tmp/start.sh
+    && chmod +x /tmp/start.sh
 
 WORKDIR /var/www/html
 
 VOLUME ["/var/lib/mysql"]
+
+CMD /tmp/start.sh && tail -f /dev/null
