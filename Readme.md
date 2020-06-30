@@ -44,6 +44,8 @@ SET password FOR 'root'@'localhost'=password('123456');
 CREATE DATABASE IF NOT EXISTS `visitor_record` CHARACTER SET utf8 COLLATE utf8_general_ci;
 GRANT ALL ON `visitor_record`.* to 'laravel'@'localhost' IDENTIFIED BY '123456789';
 FLUSH PRIVILEGES;
+
+# 支持composer
 ```
 
 
@@ -51,6 +53,9 @@ FLUSH PRIVILEGES;
 
 ```Dockerfile
 FROM docimg/app_npm:latest
+
+# /tmp/docker.sh会自动加入到CMD的末尾并执行
+COPY _file/docker.sh /tmp/docker.sh
 ```
 
 ## 参考链接

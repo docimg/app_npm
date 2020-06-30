@@ -26,4 +26,8 @@ php-fpm &
 
 nginx -g "daemon off;" &
 
+if [ -f "/tmp/docker.sh" ];then
+  chmod +x /tmp/docker.sh && /tmp/docker.sh
+fi
+
 rm -rf /tmp/*
