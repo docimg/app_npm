@@ -1,7 +1,7 @@
 ## 环境
 
 - N: nginx
-- P: PHP-7.4
+- P: PHP-7.4,支持pdo_mysql mysqli
 - M: MariaDB
 
 ## 构建
