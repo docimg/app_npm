@@ -7,15 +7,15 @@
 ## 构建
 ```bash
 # 提交容器
-docker push docimg/app_npm:v1.0
+docker push docimg/app_npm:v1.1
 
 # 清空容器缓存
-docker rmi docimg/app_npm:v1.0
+docker rmi docimg/app_npm:v1.1
 
 # 构建&&运行
-docker build -t docimg/app_npm:v1.0 .
+docker build -t docimg/app_npm:v1.1 .
 docker stop app_npm
-docker run -d --rm --name app_npm -p 80:80 -v /data/mysql:/var/lib/mysql docimg/app_npm:v1.0
+docker run -d --rm --name app_npm -p 80:80 -v /data/mysql:/var/lib/mysql docimg/app_npm:v1.1
 
 # 进入容器内
 docker exec -it app_npm /bin/sh
