@@ -27,10 +27,10 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && docker-php-source extract \
     && docker-php-ext-install pdo_mysql mysqli \
     && docker-php-source delete \
-    && chmod +x /tmp/start.sh
+    && chmod +x /tmp/docker.sh
 
 WORKDIR /var/www/html
 
 VOLUME ["/var/lib/mysql"]
 
-CMD /tmp/start.sh && tail -f /dev/null
+CMD /tmp/docker.sh && tail -f /dev/null

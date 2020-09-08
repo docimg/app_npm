@@ -54,8 +54,10 @@ FLUSH PRIVILEGES;
 ```Dockerfile
 FROM docimg/app_npm:latest
 
-# /tmp/docker.sh会自动加入到CMD的末尾并执行
-COPY _file/docker.sh /tmp/docker.sh
+# start.sh/stop.sh会自动加入到CMD的末尾并执行
+COPY _file/start.sh /tmp/start.sh
+COPY _file/stop.sh /tmp/stop.sh
+
 ```
 
 ## 参考链接

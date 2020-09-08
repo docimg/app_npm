@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -f "/tmp/start.sh" ];then
+  source /tmp/start.sh
+fi
+
 if [ ! -d "/var/lib/mysql/mysql" ];then
     echo "[i] mysql_install_db"
     mysql_install_db --user=root > /dev/null
@@ -26,8 +30,8 @@ php-fpm &
 
 nginx -g "daemon off;" &
 
-if [ -f "/tmp/docker.sh" ];then
-  chmod +x /tmp/docker.sh && /tmp/docker.sh
+if [ -f "/tmp/stop.sh" ];then
+  source /tmp/stop.sh
 fi
 
 rm -rf /tmp/*
